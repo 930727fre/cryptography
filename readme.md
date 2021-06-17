@@ -5,7 +5,7 @@ python3 main,py
 ```
 ## feature
 1. Command line program so that you can execute it without any obstacle.
-2. Saving your information on google sheet, which is a very stable and hands-on platform.
+2. Save your information on google sheet, which is a very stable and hands-on platform.On top of that, you can modify file manually.
 3. Auto-copy password you are looking for.
 3. [Demonstration video](https://youtu.be/g_DK2DOiSII)
 

@@ -1,17 +1,25 @@
 import gspread
-import os
+import clipboard
+import pprint
+
 
 gc=gspread.service_account(filename="credential.json")
 sh=gc.open_by_key("1DHI3k0KYCeTFyj_JwDnTWu8fGvAmwGZXkQvxN_xw9t4")
 
-accounts_sheet=sh.worksheet("accounts").get_all_values()
+try:
+    accounts_sheet=sh.worksheet("accounts").get_all_values()
+except:
+    pass
 worksheet=[[]]
 loggedin=False
+quit=False
 
 
 def check_account():
     try:
         sh.add_worksheet(title="accounts", rows="100", cols="2")
+        temp=[["username","userpassword"]]
+        sh.worksheet("accounts").update(temp)
     except:
         pass
     accounts_sheet=sh.worksheet("accounts")
@@ -23,16 +31,18 @@ def check(username):
         if keyword=="quit":
              break
         worksheet=sh.worksheet(username).get_all_values()
-        print(worksheet)
         for temp in range(len(worksheet)):
-            if keyword in worksheet[temp][0]:
+            if keyword == worksheet[temp][0]:
                 index=temp
                 print("service:"+worksheet[index][0])
                 print("id:"+worksheet[index][1])
                 print("password:"+worksheet[index][2])
                 print("note:"+worksheet[index][3])
+                print()
+                print("the password has been copied to your clipboard!")
+                clipboard.copy(worksheet[index][2])
                 break
-            elif temp == len(worksheet)-1:
+            if temp == len(worksheet)-1:
                 print("the service is not found!")
 
 def add(username):
@@ -41,7 +51,7 @@ def add(username):
     while same:
         service=input("enter service:")
         for temp in range(len(worksheet)):
-            if service in worksheet:
+            if service == worksheet[temp][0]:
                 print("that service is already in use,please try another name")
                 break
             if temp ==len(worksheet)-1:
@@ -52,8 +62,12 @@ def add(username):
     worksheet.append([service,id,password,note])
     sh.worksheet(username).update(worksheet)
 
+def check_all(username):
+    worksheet=sh.worksheet(username).get_all_values()
+    pprint.pprint(worksheet,depth=4)
+
 def login():
-    global loggedin
+    global loggedin,quit
     while not loggedin:
         id=input("enter your id:(enter quit to quit)")
         if id=="quit":
@@ -75,7 +89,8 @@ def login():
         while 1:
             print("1) add new password")
             print("2) check password")
-            print("3) log out")
+            print("3) check all password")
+            print("4) log out")
             cmd=input("command:")
 
             if cmd=="1":
@@ -83,8 +98,11 @@ def login():
             elif cmd=="2":
                 check(username)
             elif cmd=="3":
+                check_all(username)
+            elif cmd=="4":
                 loggedin=False
                 start()
+                quit=True
                 break
             else:
                 print("please input number between 1~3")
@@ -104,19 +122,21 @@ def register():
             elif temp ==len(accounts_sheet)-1:
                 same=False
     sh.add_worksheet(title=username, rows="100", cols="4")
+    worksheet=sh.worksheet(username)
+    worksheet.update([["service","id","password","note"]])
     worksheet =sh.worksheet("accounts")
     accounts_sheet.append([username,userpassword])
     worksheet.update(accounts_sheet)
     check_account()
 
-    print("register account successfully!")
+    print("register successfully!")
 
 def start():
+    global quit
     print("Hi, wellcome to password manager!")
     check_account()
 
-    while 1:
-        print()
+    while not quit:
         print("1)login")
         print("2)create a account")
         print("3)quit")

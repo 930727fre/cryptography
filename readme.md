@@ -25,4 +25,6 @@ sh=gc.open_by_key("1DHI3k0KYCeTFyj_JwDnTWu8fGvAmwGZXkQvxN_xw9t4")
 ```
 change the key into the code in your google sheet url.
 In my case, my google sheet url is https://docs.google.com/spreadsheets/d/1DHI3k0KYCeTFyj_JwDnTWu8fGvAmwGZXkQvxN_xw9t4/edit#gid=628264246
+
+and the code is 1DHI3k0KYCeTFyj_JwDnTWu8fGvAmwGZXkQvxN_xw9t4
 5. That's it, check out this [video](https://www.youtube.com/watch?v=T1vqS1NL89E&t=307s) for more detail about google cloud api.

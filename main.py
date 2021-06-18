@@ -2,7 +2,6 @@ import gspread
 import clipboard
 import pprint
 
-
 gc=gspread.service_account(filename="credential.json")
 sh=gc.open_by_key("1DHI3k0KYCeTFyj_JwDnTWu8fGvAmwGZXkQvxN_xw9t4")
 

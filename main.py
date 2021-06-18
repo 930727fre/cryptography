@@ -1,9 +1,13 @@
 import gspread
 import clipboard
 import pprint
+import bcrypt
+import getpass
 
 gc=gspread.service_account(filename="credential.json")
 sh=gc.open_by_key("1DHI3k0KYCeTFyj_JwDnTWu8fGvAmwGZXkQvxN_xw9t4")
+
+salt = bcrypt.gensalt()
 
 try:
     accounts_sheet=sh.worksheet("accounts").get_all_values()
@@ -37,7 +41,6 @@ def check(username):
                 print("id:"+worksheet[index][1])
                 print("password:"+worksheet[index][2])
                 print("note:"+worksheet[index][3])
-                print()
                 print("the password has been copied to your clipboard!")
                 clipboard.copy(worksheet[index][2])
                 break
@@ -71,13 +74,12 @@ def login():
         id=input("enter your id:(enter quit to quit)")
         if id=="quit":
             break
-        password=input("enter your password:")
+        password=getpass.getpass("enter your password:")
 
 
         for temp in range(len(accounts_sheet)):
             if id==accounts_sheet[temp][0]:
-                if password== accounts_sheet[temp][1]:
-                    print("right")
+                if  bcrypt.checkpw(password,accounts_sheet[temp][1]) :
                     username=accounts_sheet[temp][0]
                     loggedin=True
                     break
@@ -113,6 +115,7 @@ def register():
     while same:
         username=input("please enter username:")
         userpassword=input("please enter password:")
+        hashed = bcrypt.hashpw(userpassword, salt)
         accounts_sheet=sh.worksheet("accounts").get_all_values()
         for temp in range(len(accounts_sheet)):
             if username == accounts_sheet[temp][0]:
@@ -124,7 +127,7 @@ def register():
     worksheet=sh.worksheet(username)
     worksheet.update([["service","id","password","note"]])
     worksheet =sh.worksheet("accounts")
-    accounts_sheet.append([username,userpassword])
+    accounts_sheet.append([username,hashed])
     worksheet.update(accounts_sheet)
     check_account()
 

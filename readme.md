@@ -29,4 +29,4 @@ In my case, my google sheet url is https://docs.google.com/spreadsheets/d/1DHI3k
 and the code is 1DHI3k0KYCeTFyj_JwDnTWu8fGvAmwGZXkQvxN_xw9t4
 
 
-5. That's it, check out this [video](https://www.youtube.com/watch?v=T1vqS1NL89E&t=307s) for more detail about google cloud api.
+6. That's it, check out this [video](https://www.youtube.com/watch?v=T1vqS1NL89E&t=307s) for more detail about google cloud api.

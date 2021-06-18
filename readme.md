@@ -8,7 +8,7 @@ python3 main.py
 2. Save your information on google sheet, which is a very stable and hands-on platform.On top of that, you can modify file manually.
 3. Encrypt your password with hash.
 4. Auto-copy password you are looking for.
-5. [Demonstration video](https://youtu.be/g_DK2DOiSII)
+5. [Demonstration video](https://youtu.be/SfdZxzV8e0g)
 
 ## pip setup
 ```

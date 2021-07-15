@@ -19,7 +19,7 @@ pip install bcrypt
 ## Google cloud setup
 1. Create a project on [Google cloud](https://cloud.google.com/)
 2. Register a account as an editor(Google drive api).
-3. Download authtication.json ,rename it to "credential.json" ,and move it to the same folder as main.py.
+3. Download authtication.json, rename it to "credential.json" and move it to the same folder as main.py.
 ```
 structure:
 .

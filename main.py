@@ -3,9 +3,23 @@ import clipboard
 import pprint
 import bcrypt
 import getpass
+import configparser
+import telebot
+
+config = configparser.ConfigParser()
+config.read('config.cfg')
 
 gc=gspread.service_account(filename="credential.json")
-sh=gc.open_by_key("1DHI3k0KYCeTFyj_JwDnTWu8fGvAmwGZXkQvxN_xw9t4")
+sh=gc.open_by_key(config["google-cloud"]["token"])
+
+bot=telebot.Telebot(config["telegram-api"]["token"])
+
+bot.send_message("hi there!")
+
+@bot.message_handler(commands=["hi"])
+def command():
+    print(config["google-cloud"]["token"])
+
 
 salt = bcrypt.gensalt()
 

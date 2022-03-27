@@ -7,24 +7,23 @@ python3 main.py
 1. This is a command line program so that you can execute it without any obstacle.
 2. Save your information on google sheet, which is a very stable and secure platform. On top of that, you can modify files manually.
 3. Encrypt your password with hash.
-4. Auto-copy password you are looking for.
+4. Copy password to clipboard automatically.
 5. [Demonstration video](https://youtu.be/SfdZxzV8e0g)
 
 ## Pip setup
 ```
-pip install gspread
-pip install clipboard
-pip install bcrypt
+pip install -r requirements.txt
 ```
 ## Google cloud setup
 1. Create a project on [Google cloud](https://cloud.google.com/)
 2. Register a account as an editor(Google drive api).
-3. Download authtication.json, rename it to "credential.json" and move it to the same folder as main.py.
+3. Download authtication.json and move it to the same folder as main.py.
 ```
 structure:
 .
 ├── credential.json
 ├── main.py
+├── rsa-encryption.py
 └── readme.md
 ```
 

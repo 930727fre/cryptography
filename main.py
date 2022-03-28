@@ -1,6 +1,6 @@
 import gspread, clipboard, pprint, bcrypt
 
-YOUR_KEY=""
+YOUR_KEY="" ####Please insert your key here.
 gc=gspread.service_account(filename="authentication.json")
 sh=gc.open_by_key(YOUR_KEY)
 salt = bcrypt.gensalt()
@@ -148,3 +148,4 @@ def start():
 
 
 start()
+

@@ -4,11 +4,10 @@
 python3 main.py
 ```
 ## Features
-1. This is a command line program so that you can execute it without any obstacle.
-2. Save your information on google sheet, which is a very stable and secure platform. On top of that, you can modify files manually.
-3. Encrypt your password with hash.
-4. Copy password to clipboard automatically.
-5. [Demonstration video](https://youtu.be/SfdZxzV8e0g)
+1. This command line help you manage your password on google sheets elegantly.
+2. Encrypt your password with hash.
+3. Copy password to clipboard automatically.
+4. [Demonstration video](https://youtu.be/SfdZxzV8e0g)
 
 ## Pip setup
 ```

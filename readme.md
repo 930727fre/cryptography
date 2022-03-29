@@ -20,18 +20,18 @@ pip install -r requirements.txt
 ```
 structure:
 .
-├── credential.json
+├── authentication.json
 ├── main.py
 ├── rsa-encryption.py
 └── readme.md
 ```
 
 4. Create a google sheet and share it to your editor account.
-5. Modify line 7 in main.py
+5. Modify line 2 in main.py
 ```
-sh=gc.open_by_key("YOUR_KEY")
+YOUR_KEY=""
 ```
-change `YOUR_KEY` into the string after https://docs.google.com/spreadsheets/d/ (your Google sheet url).
+fill `YOUR_KEY` with the string after https://docs.google.com/spreadsheets/d/ (your Google sheet url).
 In my case, my google sheet url is https://docs.google.com/spreadsheets/d/1DHI3k0KYCeTFyj_JwDnTWu8fGvAmwGZXkQvxN_xw9t4/edit#gid=628264246
 so `YOUR_KEY` should be `1DHI3k0KYCeTFyj_JwDnTWu8fGvAmwGZXkQvxN_xw9t4`.
 
